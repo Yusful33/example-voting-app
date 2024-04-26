@@ -23,16 +23,14 @@ on:
 jobs:
   call-docker-build:
 
-    name: Call Docker Build
-
-    uses: bretfisher/docker-build-workflow/.github/workflows/reusable-docker-build.yaml@main
-
-    permissions:
-      contents: read
-      packages: write # needed to push docker image to ghcr.io
-      pull-requests: write # needed to create and update comments in PRs
-
     steps:
+      name: Call Docker Build
+      uses: bretfisher/docker-build-workflow/.github/workflows/reusable-docker-build.yaml@main
+
+      permissions:
+        contents: read
+        packages: write # needed to push docker image to ghcr.io
+        pull-requests: write # needed to create and update comments in PRs
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
